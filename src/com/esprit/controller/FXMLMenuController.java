@@ -10,7 +10,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -26,37 +25,27 @@ import javafx.stage.Stage;
  *
  * @author saif
  */
-public class FXMLPayerEmpController implements Initializable {
+public class FXMLMenuController implements Initializable {
 
     @FXML
-    private Label label111;
+    private Button btnAjout;
     @FXML
-    private Button btn_payer;
+    private Button btnAffiche;
     @FXML
-    private Label label;
+    private Button btnPayer;
     @FXML
-    private Label label1;
-    @FXML
-    private Label label2;
-    @FXML
-    private Label label3;
-    @FXML
-    private Label label4;
-    @FXML
-    private Label label5;
-    @FXML
-    private Button button11;
+    private Button btnPlacer;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        btn_payer.setOnAction(event -> {
+        // TODO
+        btnAjout.setOnAction(event -> {
 
             try {
-                Parent page1 = FXMLLoader.load(getClass().getResource("/com/esprit/view/FXMLListEmp.fxml"));
+                Parent page1 = FXMLLoader.load(getClass().getResource("/com/esprit/view/FXMLDocument.fxml"));
                 Scene scene = new Scene(page1);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
@@ -65,10 +54,11 @@ public class FXMLPayerEmpController implements Initializable {
                 Logger.getLogger(FXMLMenuController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-        button11.setOnAction(event -> {
+        
+        btnPayer.setOnAction(event -> {
 
             try {
-                Parent page2 = FXMLLoader.load(getClass().getResource("/com/esprit/view/FXMLMenu.fxml"));
+                Parent page2 = FXMLLoader.load(getClass().getResource("/com/esprit/view/FXMLPayerEmp.fxml"));
                 Scene scene = new Scene(page2);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
@@ -77,11 +67,31 @@ public class FXMLPayerEmpController implements Initializable {
                 Logger.getLogger(FXMLMenuController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-        // TODO
-    }    
+        
+        btnAffiche.setOnAction(event -> {
 
-    @FXML
-    private void handleButtonAction(ActionEvent event) {
-    }
+            try {
+                Parent page3 = FXMLLoader.load(getClass().getResource("/com/esprit/view/FXMLListEmp.fxml"));
+                Scene scene = new Scene(page3);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(FXMLMenuController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        btnPlacer.setOnAction(event -> {
+
+            try {
+                Parent page3 = FXMLLoader.load(getClass().getResource("/com/esprit/view/FXMLPlacerEmp.fxml"));
+                Scene scene = new Scene(page3);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(FXMLMenuController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+    }    
     
 }

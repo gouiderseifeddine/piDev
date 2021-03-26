@@ -26,7 +26,7 @@ public class FunArt extends Application {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Hello World");
         
-        parentPage = FXMLLoader.load(getClass().getResource("/com/esprit/view/FXMLListEmp.fxml"));
+        parentPage = FXMLLoader.load(getClass().getResource("/com/esprit/view/FXMLMenu.fxml"));
         Scene scene = new Scene(parentPage);
         this.primaryStage.setScene(scene);
         this.primaryStage.show();

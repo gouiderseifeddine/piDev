@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.esprit.controller;
+package funart;
 
+import com.esprit.controller.FXMLMenuController;
 import com.esprit.dao.ServiceEmp;
 import com.esprit.entity.Employe;
 import java.io.IOException;
@@ -36,9 +37,15 @@ import javafx.stage.Stage;
 public class FXMLDocumentController implements Initializable {
 
     @FXML
+    private Button cancel_button;
+    @FXML
     private Button btn_ajouter_emp;
     @FXML
-    private Button cancel_button;
+    private Label job_label;
+    @FXML
+    private Label ins_tache;
+    @FXML
+    private ComboBox combo;
     @FXML
     private TextField ins_nom;
     @FXML
@@ -49,35 +56,37 @@ public class FXMLDocumentController implements Initializable {
     private TextField ins_mobile;
     @FXML
     private TextField ins_num_carte;
+    int i=0;
     @FXML
-    private Label ins_salaire;
-    @FXML
-    private ComboBox combo;
-    @FXML
-    private Label job_label;
-    @FXML
-    private Label ins_tache;
-    Integer i=0;
+    private TextField ins_salaire;
+    
+    
+    public Boolean verifier(){
+        if(ins_nom.getText().equals("")||
+                ins_prenom.getText().equals("")||
+                ins_age.getText().equals("")||
+                ins_mobile.getText().equals("")||
+                ins_num_carte.getText().equals(""))
+            return true;
+        else 
+            return false;
+    }
 
     /**
      * Initializes the controller class.
      */
-    
-    @FXML
-    void Select(ActionEvent event){
-        String s = combo.getSelectionModel().getSelectedItem().toString();
-        job_label.setText(s);
-    }
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ObservableList<String> list = FXCollections.
-                observableArrayList("Technicien","Ingenieur","Designer","Architecte");
+        // TODO
+        ObservableList<String> list = FXCollections.observableArrayList("Technicien","Ingenieur","Designer","Architecte");
         combo.setItems(list);
+        
+        ObservableList<String> list2 = FXCollections.observableArrayList("Technicien","Ingenieur","Designer","Architecte");
+        combo.setItems(list2);
+        // TODO
         btn_ajouter_emp.setOnAction(event -> {
             
-            Employe p = new Employe(
-                    i,
+            Employe p = new Employe(i,
                     ins_nom.getText(),
                     ins_prenom.getText(),
                     ins_mobile.getText(),
@@ -85,11 +94,9 @@ public class FXMLDocumentController implements Initializable {
                     job_label.getText(),
                     ins_salaire.getText(),
                     ins_num_carte.getText(),
-                    0
-            );
-            
+                    0);
             ServiceEmp pdao = ServiceEmp.getInstance();
-            pdao.insert(p);
+            // pdao.insert(p);
             i++;
         
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -97,17 +104,15 @@ public class FXMLDocumentController implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText("Personne insérée avec succés!");
         alert.show();
-        
         ins_nom.setText("");
-        ins_age.setText("");
+        ins_prenom.setText("");
         ins_mobile.setText("");
         ins_prenom.setText("");
         job_label.setText("job");
         ins_salaire.setText("");
         ins_num_carte.setText("");
-        
         });
-        cancel_button.setOnAction(event -> {
+         cancel_button.setOnAction(event -> {
 
             try {
                 Parent page2 = FXMLLoader.load(getClass().getResource("/com/esprit/view/FXMLMenu.fxml"));
@@ -119,11 +124,19 @@ public class FXMLDocumentController implements Initializable {
                 Logger.getLogger(FXMLMenuController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
+        
     }    
 
     @FXML
     private void handleButtonAction(ActionEvent event) {
     }
 
+    @FXML
+    private void Select(ActionEvent event) {
+        String s = combo.getSelectionModel().getSelectedItem().toString();
+        job_label.setText(s);
+    }
+    
+    
     
 }

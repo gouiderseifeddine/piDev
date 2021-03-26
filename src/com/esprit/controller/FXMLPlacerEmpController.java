@@ -5,11 +5,14 @@
  */
 package com.esprit.controller;
 
+import com.esprit.entity.Employe;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,7 +21,11 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 /**
@@ -26,46 +33,48 @@ import javafx.stage.Stage;
  *
  * @author saif
  */
-public class FXMLPayerEmpController implements Initializable {
+public class FXMLPlacerEmpController implements Initializable {
 
     @FXML
-    private Label label111;
+    private ComboBox combo2;
     @FXML
-    private Button btn_payer;
+    private Label event_label;
     @FXML
-    private Label label;
+    private Button btn_annuler_placer;
     @FXML
-    private Label label1;
+    private Button btn_valider_placement;
     @FXML
-    private Label label2;
+    private TableView<Employe> table2;
     @FXML
-    private Label label3;
+    private TableColumn<Employe,Employe> emp_dispo;
     @FXML
-    private Label label4;
+    private TableColumn<Employe, Integer> id_dispo;
     @FXML
-    private Label label5;
+    private TableColumn<Employe, String> tache_dispo;
     @FXML
-    private Button button11;
+    private TableColumn<Employe, Employe> emp_ndispo;
+    @FXML
+    private TableColumn<Employe, Integer> id_ndispo;
+    @FXML
+    private TableColumn<Employe, String> tache_ndispo;
 
+    
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        btn_payer.setOnAction(event -> {
-
-            try {
-                Parent page1 = FXMLLoader.load(getClass().getResource("/com/esprit/view/FXMLListEmp.fxml"));
-                Scene scene = new Scene(page1);
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException ex) {
-                Logger.getLogger(FXMLMenuController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        });
-        button11.setOnAction(event -> {
+        // TODO
+        ObservableList<String> list = FXCollections.observableArrayList(
+                "100% tounsi",
+                "كليلة ودمنة",
+                "fantastic 4",
+                "Avengers",
+                "Made in Tunisia");
+        combo2.setItems(list);   
+  
+        btn_annuler_placer.setOnAction(event -> {
 
             try {
                 Parent page2 = FXMLLoader.load(getClass().getResource("/com/esprit/view/FXMLMenu.fxml"));
@@ -77,11 +86,25 @@ public class FXMLPayerEmpController implements Initializable {
                 Logger.getLogger(FXMLMenuController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-        // TODO
+        btn_valider_placement.setOnAction(event -> {
+
+            try {
+                Parent page2 = FXMLLoader.load(getClass().getResource("/com/esprit/view/FXMLListEmp.fxml"));
+                Scene scene = new Scene(page2);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(FXMLMenuController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
     }    
 
     @FXML
-    private void handleButtonAction(ActionEvent event) {
+    private void Select2(ActionEvent event) {
+        String s = combo2.getSelectionModel().getSelectedItem().toString();
+        event_label.setText(s);
+        
     }
     
 }

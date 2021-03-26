@@ -1,26 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.chart.StackedBarChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="506.0" prefWidth="740.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/15.0.1" fx:controller="com.esprit.controller.FXMLListEmpController">
+<AnchorPane id="AnchorPane" onMouseClicked="#changeScene" prefHeight="537.0" prefWidth="752.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.controller.FXMLListEmpController">
    <children>
-      <LineChart layoutX="485.0" layoutY="253.0" prefHeight="185.0" prefWidth="241.0">
-        <xAxis>
-          <CategoryAxis side="BOTTOM" />
-        </xAxis>
-        <yAxis>
-          <NumberAxis prefWidth="40.0" side="LEFT" />
-        </yAxis>
-      </LineChart>
-      <StackedBarChart layoutX="485.0" layoutY="17.0" prefHeight="185.0" prefWidth="241.0">
+      <StackedBarChart layoutX="486.0" layoutY="69.0" prefHeight="185.0" prefWidth="241.0">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>
@@ -28,16 +22,25 @@
           <NumberAxis side="LEFT" />
         </yAxis>
       </StackedBarChart>
-      <TableView layoutX="34.0" layoutY="27.0" prefHeight="443.0" prefWidth="442.0">
+      <TableView fx:id="table" layoutX="28.0" layoutY="69.0" prefHeight="384.0" prefWidth="442.0">
         <columns>
-          <TableColumn prefWidth="88.0" text="Nom" />
-          <TableColumn prefWidth="89.0" text="Prenom" />
-            <TableColumn prefWidth="96.0" text="tache" />
-            <TableColumn prefWidth="103.0" text="Mobile" />
-            <TableColumn prefWidth="73.0" text="Salle" />
+          <TableColumn fx:id="nom" prefWidth="88.0" text="Nom" />
+          <TableColumn fx:id="prenom" prefWidth="89.0" text="Prenom" />
+            <TableColumn fx:id="tache" prefWidth="96.0" text="tache" />
+            <TableColumn fx:id="mobile" prefWidth="98.0" text="Mobile" />
+            <TableColumn fx:id="salle" prefWidth="78.0" text="Salle" />
         </columns>
       </TableView>
-      <Label fx:id="label11" layoutX="544.0" layoutY="209.0" minHeight="16" minWidth="69" text="best worker" />
-      <Label fx:id="label111" layoutX="544.0" layoutY="444.0" minHeight="16" minWidth="69" text="courbe de travail" />
+      <Label fx:id="label11" layoutX="572.0" layoutY="253.0" minHeight="16" minWidth="69" text="best worker" />
+      <Label fx:id="label111" layoutX="556.0" layoutY="478.0" minHeight="16" minWidth="69" text="division des taches" />
+      <Button fx:id="btn_payer" layoutX="102.0" layoutY="478.0" mnemonicParsing="false" onAction="#changeScene" prefHeight="25.0" prefWidth="83.0" text="Payer" />
+      <Button fx:id="btn_annuler_afficher" layoutX="335.0" layoutY="478.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="83.0" text="Annuler" />
+      <PieChart fx:id="chrt_emp" layoutX="486.0" layoutY="280.0" prefHeight="185.0" prefWidth="241.0" />
+      <DatePicker layoutX="520.0" layoutY="21.0" />
+      <Label layoutX="131.0" layoutY="16.0" minHeight="16" minWidth="69" text="Affichage des employés" textFill="#ee2525">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

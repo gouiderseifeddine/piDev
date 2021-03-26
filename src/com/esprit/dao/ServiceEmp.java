@@ -26,42 +26,70 @@ import javax.swing.JOptionPane;
  *
  * @author saif
  */
-public class ServiceEmp {
+public class ServiceEmp implements EmpIdao{
+    
     private static ServiceEmp instance;
     Connection cnx;
     Statement ste;
     private ResultSet rs;
     
-    private ServiceEmp(){
+    private ServiceEmp() {
         ConnexionSingleton cs=ConnexionSingleton.getInstance();
         try {
-            ste=(Statement) cs.getCnx().createStatement();
+            ste=cs.getCnx().createStatement();
         } catch (SQLException ex) {
             Logger.getLogger(ServiceEmp.class.getName()).log(Level.SEVERE, null, ex);
-        }    
+        }
     }
-    public void Insert(Employe p) throws Exception {
-        String req = "insert into Employe (Nom,Prenom,tache,mobile,salle) values ('" + p.getNom() + "','" + p.getPrenom() + "','" + p.getTache() + "','" + p.getMobile() + "'," + p.getSalle() + ")";
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Information Dialog");
-        alert.setHeaderText(null);
-        alert.setContentText("Produit insérée avec succés!");
-        alert.show();
+    
+    public static ServiceEmp getInstance(){
+        if(instance==null) 
+            instance=new ServiceEmp();
+        return instance;
     }
+
+    @Override
+    public void insert(Employe o) {
+        String req="insert into employe (nom,prenom,tache,mobile,salle,status,salaire,num_carte)"
+                + " values ('"+o.getNom()+"','"+o.getPrenom()+",'"+o.getTache()+",'"+o.getMobile()+"','"+o.getNum_salle()+"),'"+o.getStatus()+",'"+o.getSalaire()+",'"+o.getNum_carte()+"";
+        try {
+            ste.executeUpdate(req);
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceEmp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+
+    @Override
+    public void delete(Employe o) {
+        String req="delete from personne where id="+o.getId();
+        Employe p=displayById(o.getId());
+        
+          if(p!=null)
+              try {
+           
+            ste.executeUpdate(req);
+             
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceEmp.class.getName()).log(Level.SEVERE, null, ex);
+        }else System.out.println("n'existe pas");
+    }
+
+    @Override
     public ObservableList<Employe> displayAll() {
-        String req="select * from produit";
+        String req="select * from employe";
         ObservableList<Employe> list=FXCollections.observableArrayList();       
         
         try {
             rs=ste.executeQuery(req);
             while(rs.next()){
-                Employe p=new Employe();
+                Employe p = new Employe();
                 p.setId(rs.getInt(1));
-                p.setNom(rs.getString("Gouider"));
-                p.setPrenom(rs.getString("saifeddine"));
-                p.setTache(rs.getString("technicien"));
-                p.setMobile(rs.getString("27621983"));
-                p.setSalle(rs.getInt(2));
+                p.setNom(rs.getString("nom"));
+                p.setPrenom(rs.getString("prenom"));
+                p.setTache(rs.getString("tache"));
+                p.setMobile(rs.getString("mobile"));
+                p.setNum_salle(rs.getInt("salle"));
                 list.add(p);
             }
             
@@ -69,24 +97,6 @@ public class ServiceEmp {
             Logger.getLogger(ServiceEmp.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
-    }
-    public Employe displayById(int id) {
-           String req="select * from produit where id_produit ="+id;
-           Employe p=new Employe();
-        try {
-            rs=ste.executeQuery(req);
-           // while(rs.next()){
-            rs.next();
-                p.setNom(rs.getString("Nom"));
-                p.setPrenom(rs.getString("Seifeddine"));
-                p.setTache(rs.getString("technicien"));
-                p.setMobile(rs.getString("27621983"));
-                p.setSalle(rs.getInt(2));
-            //}  
-        } catch (SQLException ex) {
-            Logger.getLogger(ServiceEmp.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    return p;
     }
     public List<Employe> displayAllList() {
         String req="select * from employe";
@@ -96,11 +106,12 @@ public class ServiceEmp {
             rs=ste.executeQuery(req);
             while(rs.next()){
                 Employe p=new Employe();
-                p.setNom(rs.getString("Nom"));
-                p.setPrenom(rs.getString("Seifeddine"));
-                p.setTache(rs.getString("technicien"));
-                p.setMobile(rs.getString("27621983"));
-                p.setSalle(rs.getInt(2));
+                p.setId(rs.getInt(1));
+                p.setNom(rs.getString("nom"));
+                p.setPrenom(rs.getString("prenom"));
+                p.setTache(rs.getString("tache"));
+                p.setMobile(rs.getString("mobile"));
+                p.setNum_salle(rs.getInt("salle"));
                 list.add(p);
             }
             
@@ -109,18 +120,51 @@ public class ServiceEmp {
         }
         return list;
     }
-      public boolean update(Employe p) throws SQLException {
-        String qry = "UPDATE Employe SET nom = '"+p.getNom()+"', prenom = '"+p.getPrenom()+"', tache = '"+p.getTache()+"', mobile = '"+p.getMobile()+"' WHERE emplacement_salle = "+p.getSalle();
-        return ste.executeUpdate(qry) > 0;
+
+    
+    
+    
+    @Override
+    public Employe displayById(int id) {
+        String req="select * from employe where id ="+id;
+           Employe p=new Employe();
+        try {
+            rs=ste.executeQuery(req);
+           // while(rs.next()){
+            rs.next();
+                p.setId(rs.getInt("id"));
+                p.setNom(rs.getString("nom"));
+                p.setPrenom(rs.getString("prenom"));
+                p.setTache(rs.getString("tache"));
+                p.setNum_salle(rs.getInt("salle"));
+                p.setMobile(rs.getString("mobile"));
+                
+                
+            //}  
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceEmp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    return p;
     }
-      public static ServiceEmp getInstance(){
-        if(instance==null) 
-            instance=new ServiceEmp();
-        return instance;
+
+    
+    
+    
+    
+    
+    @Override
+    public boolean update(Employe os) {
+        String qry = "UPDATE employe SET nom = '"+os.getNom()+"', prenom = '"+os.getPrenom()+"' WHERE id = "+os.getId();
+        
+        try {
+            if (ste.executeUpdate(qry) > 0) {
+                return true;
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceEmp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
-    
-    
-    
-    
     
 }
