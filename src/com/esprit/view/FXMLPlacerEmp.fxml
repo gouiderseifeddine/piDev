@@ -12,28 +12,12 @@
 <AnchorPane id="AnchorPane" prefHeight="528.0" prefWidth="648.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.controller.FXMLPlacerEmpController">
    <children>
       <DatePicker layoutX="405.0" layoutY="23.0" />
-      <TableView fx:id="table2" layoutX="22.0" layoutY="23.0" prefHeight="445.0" prefWidth="295.0">
-        <columns>
-          <TableColumn fx:id="emp_dispo" prefWidth="138.0" text="Employés disponibles">
-               <columns>
-                  <TableColumn fx:id="id_dispo" prefWidth="49.0" text="id_d" />
-                  <TableColumn fx:id="tache_dispo" prefWidth="96.0" text="Tache_d" />
-               </columns>
-            </TableColumn>
-          <TableColumn fx:id="emp_ndispo" prefWidth="144.0" text="Employés indisponibles">
-               <columns>
-                  <TableColumn fx:id="id_ndispo" prefWidth="50.0" text="id_nd" />
-                  <TableColumn fx:id="tache_ndispo" prefWidth="100.0" text="Tache_nd" />
-               </columns>
-            </TableColumn>
-        </columns>
-      </TableView>
       <Label layoutX="388.0" layoutY="91.0" text="Placer employé" textFill="#ee2525">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <Label layoutX="386.0" layoutY="160.0" text="Gouider Seifeddine">
+      <Label layoutX="386.0" layoutY="161.0" text="Gouider Seifeddine">
          <font>
             <Font size="18.0" />
          </font>
@@ -43,14 +27,30 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <ComboBox fx:id="combo2" layoutX="481.0" layoutY="277.0" onAction="#Select2" prefWidth="150.0" promptText="choose" />
-      <Label layoutX="359.0" layoutY="281.0" text="Evenement" />
-      <Label fx:id="event_label" layoutX="429.0" layoutY="341.0" prefHeight="25.0" prefWidth="108.0" text="event">
+      <ComboBox fx:id="combo2" layoutX="483.0" layoutY="311.0" onAction="#Select2" prefWidth="150.0" promptText="choose" />
+      <Label layoutX="359.0" layoutY="315.0" text="Evenement" />
+      <Label fx:id="event_label" layoutX="429.0" layoutY="362.0" prefHeight="25.0" prefWidth="108.0" text="event">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
       <Button fx:id="btn_annuler_placer" layoutX="360.0" layoutY="428.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="94.0" text="Annuler" />
       <Button fx:id="btn_valider_placement" layoutX="502.0" layoutY="428.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="94.0" text="Valider" />
+      <TableView fx:id="table2" layoutX="27.0" layoutY="23.0" prefHeight="469.0" prefWidth="301.0">
+        <columns>
+          <TableColumn prefWidth="300.0" text="Employe">
+               <columns>
+                  <TableColumn fx:id="id" prefWidth="76.0" text="Id" />
+                  <TableColumn fx:id="tache" prefWidth="116.0" text="tache" />
+                  <TableColumn fx:id="disponibilité" prefWidth="108.0" text="disponibilité" />
+               </columns>
+            </TableColumn>
+        </columns>
+      </TableView>
+      <Label layoutX="391.0" layoutY="237.0" text="Disponible" textFill="#0aee38">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

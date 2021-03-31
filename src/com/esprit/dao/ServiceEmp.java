@@ -50,8 +50,15 @@ public class ServiceEmp implements EmpIdao{
 
     @Override
     public void insert(Employe o) {
-        String req="insert into employe (nom,prenom,tache,mobile,salle,status,salaire,num_carte)"
-                + " values ('"+o.getNom()+"','"+o.getPrenom()+",'"+o.getTache()+",'"+o.getMobile()+"','"+o.getNum_salle()+"),'"+o.getStatus()+",'"+o.getSalaire()+",'"+o.getNum_carte()+"";
+        String req="insert into employe (nom,prenom,tache,age,mobile,salaire,num_carte,id_salle) values ("
+                + "'"+o.getNom()
+                +"','"+o.getPrenom()
+                +"','"+o.getTache()
+                +"','"+o.getAge()
+                +"','"+o.getMobile()
+                +"','"+o.getSalaire()
+                +"','"+o.getNum_carte()
+                +"','"+o.getNum_salle()+"')";
         try {
             ste.executeUpdate(req);
         } catch (SQLException ex) {
@@ -88,8 +95,8 @@ public class ServiceEmp implements EmpIdao{
                 p.setNom(rs.getString("nom"));
                 p.setPrenom(rs.getString("prenom"));
                 p.setTache(rs.getString("tache"));
-                p.setMobile(rs.getString("mobile"));
-                p.setNum_salle(rs.getInt("salle"));
+                p.setMobile(rs.getInt("mobile"));
+                p.setNum_salle(rs.getInt("id_salle"));
                 list.add(p);
             }
             
@@ -110,8 +117,9 @@ public class ServiceEmp implements EmpIdao{
                 p.setNom(rs.getString("nom"));
                 p.setPrenom(rs.getString("prenom"));
                 p.setTache(rs.getString("tache"));
-                p.setMobile(rs.getString("mobile"));
-                p.setNum_salle(rs.getInt("salle"));
+                p.setDisponible(rs.getString("disponible"));
+                p.setMobile(rs.getDouble("mobile"));
+                p.setNum_salle(rs.getInt("id_salle"));
                 list.add(p);
             }
             
@@ -127,7 +135,7 @@ public class ServiceEmp implements EmpIdao{
     @Override
     public Employe displayById(int id) {
         String req="select * from employe where id ="+id;
-           Employe p=new Employe();
+           Employe p = new Employe();
         try {
             rs=ste.executeQuery(req);
            // while(rs.next()){
@@ -137,7 +145,7 @@ public class ServiceEmp implements EmpIdao{
                 p.setPrenom(rs.getString("prenom"));
                 p.setTache(rs.getString("tache"));
                 p.setNum_salle(rs.getInt("salle"));
-                p.setMobile(rs.getString("mobile"));
+                p.setMobile(rs.getDouble("mobile"));
                 
                 
             //}  

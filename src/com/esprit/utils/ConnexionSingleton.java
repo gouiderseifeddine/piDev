@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  * @author saif
  */
 public class ConnexionSingleton {
-    private String url="jdbc:mysql://127.0.0.1:3306/PiDev";
+    private String url="jdbc:mysql://127.0.0.1:3306/3a18java";
     private String login="root";
     private String pwd="";
     private Connection cnx;

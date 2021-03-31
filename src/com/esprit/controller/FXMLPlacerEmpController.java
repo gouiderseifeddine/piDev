@@ -11,6 +11,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -43,26 +45,22 @@ public class FXMLPlacerEmpController implements Initializable {
     private Button btn_annuler_placer;
     @FXML
     private Button btn_valider_placement;
-    @FXML
-    private TableView<Employe> table2;
-    @FXML
-    private TableColumn<Employe,Employe> emp_dispo;
-    @FXML
-    private TableColumn<Employe, Integer> id_dispo;
-    @FXML
-    private TableColumn<Employe, String> tache_dispo;
-    @FXML
-    private TableColumn<Employe, Employe> emp_ndispo;
-    @FXML
-    private TableColumn<Employe, Integer> id_ndispo;
-    @FXML
-    private TableColumn<Employe, String> tache_ndispo;
-
-    
+   
+    private ListData listdata1 = new ListData();
     
     /**
      * Initializes the controller class.
      */
+    
+    @FXML
+    private TableView<Employe> table2;
+    @FXML
+    private TableColumn<Employe, String> id;
+    @FXML
+    private TableColumn<Employe, String> tache;
+    @FXML
+    private TableColumn<Employe, String> disponibilité;
+     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -71,8 +69,29 @@ public class FXMLPlacerEmpController implements Initializable {
                 "كليلة ودمنة",
                 "fantastic 4",
                 "Avengers",
-                "Made in Tunisia");
+                "Made in Tunisia");   
         combo2.setItems(list);   
+        
+        
+        table2.setItems(listdata1.getEmploye());
+        
+        
+        id.setCellValueFactory(cell -> {
+            String s= String.valueOf(cell.getValue().getId());
+            ObservableValue<String> obsInt = new SimpleStringProperty(s);
+            return obsInt;
+                });
+        tache.setCellValueFactory(cell -> {
+            ObservableValue<String> obsInt = new SimpleStringProperty(cell.getValue().getTache());
+            return obsInt;
+                });
+        disponibilité.setCellValueFactory(cell -> {
+            System.out.println(listdata1.getEmploye().get(0).toString());
+            ObservableValue<String> obsInt = new SimpleStringProperty(cell.getValue().getDisponible());
+            
+            return obsInt;
+                });
+             
   
         btn_annuler_placer.setOnAction(event -> {
 

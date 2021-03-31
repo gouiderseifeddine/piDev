@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" onMouseClicked="#changeScene" prefHeight="537.0" prefWidth="752.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.controller.FXMLListEmpController">
+<AnchorPane id="AnchorPane"  prefHeight="537.0" prefWidth="752.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.controller.FXMLListEmpController">
    <children>
       <StackedBarChart layoutX="486.0" layoutY="69.0" prefHeight="185.0" prefWidth="241.0">
         <xAxis>
@@ -33,7 +33,7 @@
       </TableView>
       <Label fx:id="label11" layoutX="572.0" layoutY="253.0" minHeight="16" minWidth="69" text="best worker" />
       <Label fx:id="label111" layoutX="556.0" layoutY="478.0" minHeight="16" minWidth="69" text="division des taches" />
-      <Button fx:id="btn_payer" layoutX="102.0" layoutY="478.0" mnemonicParsing="false" onAction="#changeScene" prefHeight="25.0" prefWidth="83.0" text="Payer" />
+      <Button fx:id="btn_payer" layoutX="102.0" layoutY="478.0" mnemonicParsing="false"  prefHeight="25.0" prefWidth="83.0" text="Payer" />
       <Button fx:id="btn_annuler_afficher" layoutX="335.0" layoutY="478.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="83.0" text="Annuler" />
       <PieChart fx:id="chrt_emp" layoutX="486.0" layoutY="280.0" prefHeight="185.0" prefWidth="241.0" />
       <DatePicker layoutX="520.0" layoutY="21.0" />

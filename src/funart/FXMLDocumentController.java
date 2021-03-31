@@ -9,6 +9,7 @@ import com.esprit.controller.FXMLMenuController;
 import com.esprit.dao.ServiceEmp;
 import com.esprit.entity.Employe;
 import java.io.IOException;
+import static java.lang.Integer.parseInt;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -56,7 +57,7 @@ public class FXMLDocumentController implements Initializable {
     private TextField ins_mobile;
     @FXML
     private TextField ins_num_carte;
-    int i=0;
+    int i=6;
     @FXML
     private TextField ins_salaire;
     
@@ -81,22 +82,21 @@ public class FXMLDocumentController implements Initializable {
         ObservableList<String> list = FXCollections.observableArrayList("Technicien","Ingenieur","Designer","Architecte");
         combo.setItems(list);
         
-        ObservableList<String> list2 = FXCollections.observableArrayList("Technicien","Ingenieur","Designer","Architecte");
-        combo.setItems(list2);
         // TODO
         btn_ajouter_emp.setOnAction(event -> {
             
-            Employe p = new Employe(i,
+            Employe p = new Employe(
                     ins_nom.getText(),
                     ins_prenom.getText(),
-                    ins_mobile.getText(),
-                    ins_age.getText(),
-                    job_label.getText(),
-                    ins_salaire.getText(),
-                    ins_num_carte.getText(),
-                    0);
+                    job_label.getText(),                 
+                    Integer.parseInt(ins_age.getText()),
+                    Integer.parseInt(ins_mobile.getText()),
+                    Float.parseFloat(ins_salaire.getText()),
+                    ins_num_carte.getText(),0);
+            
             ServiceEmp pdao = ServiceEmp.getInstance();
-            // pdao.insert(p);
+            System.out.println(p.toString());
+            pdao.insert(p);
             i++;
         
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

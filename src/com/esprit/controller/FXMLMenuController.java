@@ -17,7 +17,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 /**
@@ -69,7 +68,6 @@ public class FXMLMenuController implements Initializable {
         });
         
         btnAffiche.setOnAction(event -> {
-
             try {
                 Parent page3 = FXMLLoader.load(getClass().getResource("/com/esprit/view/FXMLListEmp.fxml"));
                 Scene scene = new Scene(page3);
@@ -83,8 +81,8 @@ public class FXMLMenuController implements Initializable {
         btnPlacer.setOnAction(event -> {
 
             try {
-                Parent page3 = FXMLLoader.load(getClass().getResource("/com/esprit/view/FXMLPlacerEmp.fxml"));
-                Scene scene = new Scene(page3);
+                Parent page4 = FXMLLoader.load(getClass().getResource("/com/esprit/view/FXMLPlacerEmp.fxml"));
+                Scene scene = new Scene(page4);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
                 stage.show();

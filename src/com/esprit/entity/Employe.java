@@ -12,38 +12,21 @@ import java.util.Objects;
  * @author saif
  */
 public class Employe {
-
     Integer id;
     String nom;
     String prenom;
     String tache;
-    String age;
-    String mobile;
-    String salaire;
+    String disponible;
+    int age;
+    double mobile;
+    float salaire;
     String num_carte;
-    int status;
     int num_salle;
-
-    public String getAge() {
-        return age;
-    }
-
-    public void setAge(String age) {
-        this.age = age;
-    }
-
-    public Employe(Integer id, String tache, int status) {
-        this.id = id;
-        this.tache = tache;
-        this.status = status;
-    }
 
     public Employe() {
     }
-    
 
-    public Employe(Integer id, String nom, String prenom, String tache, String age, String mobile, String salaire, String num_carte, int status) {
-        this.id = id;
+    public Employe(String nom, String prenom, String tache, int age, double mobile, float salaire, String num_carte) {
         this.nom = nom;
         this.prenom = prenom;
         this.tache = tache;
@@ -51,10 +34,9 @@ public class Employe {
         this.mobile = mobile;
         this.salaire = salaire;
         this.num_carte = num_carte;
-        this.status = status;
     }
 
-    public Employe(String nom, String prenom, String tache, String mobile, int num_salle) {
+    public Employe(String nom, String prenom, String tache, double mobile, int num_salle) {
         this.nom = nom;
         this.prenom = prenom;
         this.tache = tache;
@@ -62,75 +44,36 @@ public class Employe {
         this.num_salle = num_salle;
     }
 
-    public int getNum_salle() {
-        return num_salle;
-    }
-
-    public void setNum_salle(int num_salle) {
+    public Employe(Integer id, String nom, String prenom, String tache, String disponible, double mobile, int num_salle) {
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.tache = tache;
+        this.disponible = disponible;
+        this.mobile = mobile;
         this.num_salle = num_salle;
     }
+    
 
-   
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Employe other = (Employe) obj;
-        if (this.status != other.status) {
-            return false;
-        }
-        if (!Objects.equals(this.nom, other.nom)) {
-            return false;
-        }
-        if (!Objects.equals(this.prenom, other.prenom)) {
-            return false;
-        }
-        if (!Objects.equals(this.tache, other.tache)) {
-            return false;
-        }
-        if (!Objects.equals(this.mobile, other.mobile)) {
-            return false;
-        }
-        if (!Objects.equals(this.salaire, other.salaire)) {
-            return false;
-        }
-        if (!Objects.equals(this.num_carte, other.num_carte)) {
-            return false;
-        }
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        return true;
-    }
-
-    public String getTache() {
-        return tache;
-    }
-
-    public void setTache(String tache) {
-        this.tache = tache;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
+    
+    public Employe(Integer id, String tache, String disponible) {
         this.id = id;
+        this.tache = tache;
+        this.disponible = disponible;
+    }
+    
+    
+    
+
+    public Employe(String nom, String prenom, String tache, int age, double mobile, float salaire, String num_carte, int num_salle) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.tache = tache;
+        this.age = age;
+        this.mobile = mobile;
+        this.salaire = salaire;
+        this.num_carte = num_carte;
+        this.num_salle = num_salle;
     }
 
     public String getNom() {
@@ -148,20 +91,45 @@ public class Employe {
     public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
+    
 
-    public String getMobile() {
+    public String getTache() {
+        return tache;
+    }
+
+    public void setTache(String tache) {
+        this.tache = tache;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(String disponible) {
+        this.disponible = disponible;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public double getMobile() {
         return mobile;
     }
 
-    public void setMobile(String mobile) {
+    public void setMobile(double mobile) {
         this.mobile = mobile;
     }
 
-    public String getSalaire() {
+    public float getSalaire() {
         return salaire;
     }
 
-    public void setSalaire(String salaire) {
+    public void setSalaire(float salaire) {
         this.salaire = salaire;
     }
 
@@ -173,15 +141,37 @@ public class Employe {
         this.num_carte = num_carte;
     }
 
-    public int getStatus() {
-        return status;
+    public int getNum_salle() {
+        return num_salle;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public void setNum_salle(int num_salle) {
+        this.num_salle = num_salle;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Employe{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", tache=" + tache + ", disponible=" + disponible + ", age=" + age + ", mobile=" + mobile + ", salaire=" + salaire + ", num_carte=" + num_carte + ", num_salle=" + num_salle + '}';
     }
     
     
-
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 }

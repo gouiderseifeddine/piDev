@@ -13,9 +13,10 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -27,10 +28,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-
 /**
  * FXML Controller class
  *
@@ -50,7 +48,9 @@ public class FXMLListEmpController implements Initializable {
     @FXML
     private TableColumn<Employe, String> mobile;
     @FXML
-    private TableColumn<Employe, Integer> salle;
+    private TableColumn<Employe, String> salle;
+    
+    private ListData listdata = new ListData();
     
     
     ObservableList<PieChart.Data> list1=FXCollections.
@@ -59,14 +59,8 @@ public class FXMLListEmpController implements Initializable {
      * Initializes the controller class.
      */
     
-    ObservableList<Employe> list = FXCollections.observableArrayList(
-            new Employe("Gouider","Saif","Technicien","27621983",2),
-            new Employe("Ben Gouta","Monam","Technicien","27055177",2),
-            new Employe("M'sahal","Hbib","architecte","29473912",4),
-            new Employe("Zaibi","ahmed","ingenieur","98525362",1),
-            new Employe("eddine","baha","Technicien","40402121",1),
-            new Employe("Ben gouta","Naim","architecte","26265555",5)
-    );
+    
+    
     @FXML
     private Button btn_payer;
     @FXML
@@ -82,13 +76,31 @@ public class FXMLListEmpController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        nom.setCellValueFactory(new PropertyValueFactory<Employe,String>("nom"));
-        prenom.setCellValueFactory(new PropertyValueFactory<Employe,String>("prenom"));
-        tache.setCellValueFactory(new PropertyValueFactory<Employe,String>("tache"));
-        mobile.setCellValueFactory(new PropertyValueFactory<Employe,String>("mobile"));
-        salle.setCellValueFactory(new PropertyValueFactory<Employe,Integer>("salle"));
+        table.setItems(listdata.getEmploye());
         
-        table.setItems(list);
+        nom.setCellValueFactory(cell -> {
+            ObservableValue<String> obsInt = new SimpleStringProperty(cell.getValue().getNom());
+            return obsInt;
+                });
+        prenom.setCellValueFactory(cell -> {
+            ObservableValue<String> obsInt = new SimpleStringProperty(cell.getValue().getPrenom());
+            return obsInt;
+                });
+        tache.setCellValueFactory(cell -> {
+            ObservableValue<String> obsInt = new SimpleStringProperty(cell.getValue().getTache());
+            return obsInt;
+                });
+        
+        mobile.setCellValueFactory(cell -> {
+            String s= String.valueOf(cell.getValue().getMobile());
+            ObservableValue<String> obsInt = new SimpleStringProperty(s);
+            return obsInt;
+                });
+        salle.setCellValueFactory(cell -> {
+            String s= String.valueOf(cell.getValue().getNum_salle());
+            ObservableValue<String> obsInt = new SimpleStringProperty(s);
+            return obsInt;
+                });
         
         
         btn_annuler_afficher.setOnAction(event -> {
@@ -133,20 +145,6 @@ public class FXMLListEmpController implements Initializable {
 
    
 
-    @FXML
-    private void changeScene(MouseEvent event) {
-        try{
-            Parent root = FXMLLoader.load(getClass().getResource("/com/esprit/view/FXMLPayerEmp.fxml"));
-            Stage window = (Stage) btn_payer.getScene().getWindow();
-            window.setScene(new Scene(root));
-        }catch (IOException ex){
-            System.out.println(ex);
-        }
-        
-    }
-
-    @FXML
-    private void changeScene(ActionEvent event) {
-    }
+    
     
 }
