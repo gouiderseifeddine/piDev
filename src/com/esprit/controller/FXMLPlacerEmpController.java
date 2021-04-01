@@ -60,6 +60,14 @@ public class FXMLPlacerEmpController implements Initializable {
     private TableColumn<Employe, String> tache;
     @FXML
     private TableColumn<Employe, String> disponibilité;
+    @FXML
+    private Label nom;
+    @FXML
+    private Label tache_label;
+    @FXML
+    private Label dispo_label;
+    @FXML
+    private Label prenom;
      
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -88,9 +96,24 @@ public class FXMLPlacerEmpController implements Initializable {
         disponibilité.setCellValueFactory(cell -> {
             System.out.println(listdata1.getEmploye().get(0).toString());
             ObservableValue<String> obsInt = new SimpleStringProperty(cell.getValue().getDisponible());
-            
             return obsInt;
                 });
+        
+        table2.setOnMouseClicked(event->{
+        nom.setText(String.valueOf(listdata1.getEmploye()
+                .get(table2.getSelectionModel().getSelectedIndex())
+                .getNom()));
+        prenom.setText(listdata1.getEmploye()
+                .get(table2.getSelectionModel().getSelectedIndex())
+                .getPrenom());
+        tache_label.setText(listdata1.getEmploye()
+                .get(table2.getSelectionModel().getSelectedIndex())
+                .getTache());
+        dispo_label.setText(listdata1.getEmploye()
+                .get(table2.getSelectionModel().getSelectedIndex())
+                .getDisponible());
+    
+    });
              
   
         btn_annuler_placer.setOnAction(event -> {
