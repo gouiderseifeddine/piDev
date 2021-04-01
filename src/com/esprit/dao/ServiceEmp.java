@@ -95,6 +95,7 @@ public class ServiceEmp implements EmpIdao{
                 p.setNom(rs.getString("nom"));
                 p.setPrenom(rs.getString("prenom"));
                 p.setTache(rs.getString("tache"));
+                p.setDisponible(rs.getString("disponible"));
                 p.setMobile(rs.getInt("mobile"));
                 p.setNum_salle(rs.getInt("id_salle"));
                 list.add(p);

@@ -59,7 +59,7 @@ public class FXMLPlacerEmpController implements Initializable {
     @FXML
     private TableColumn<Employe, String> tache;
     @FXML
-    private TableColumn<Employe, String> disponibilité;
+    private TableColumn<Employe, String> disponible;
     @FXML
     private Label nom;
     @FXML
@@ -93,8 +93,7 @@ public class FXMLPlacerEmpController implements Initializable {
             ObservableValue<String> obsInt = new SimpleStringProperty(cell.getValue().getTache());
             return obsInt;
                 });
-        disponibilité.setCellValueFactory(cell -> {
-            System.out.println(listdata1.getEmploye().get(0).toString());
+        disponible.setCellValueFactory(cell -> {
             ObservableValue<String> obsInt = new SimpleStringProperty(cell.getValue().getDisponible());
             return obsInt;
                 });

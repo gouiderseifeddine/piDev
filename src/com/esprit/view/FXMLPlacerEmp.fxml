@@ -42,7 +42,7 @@
                <columns>
                   <TableColumn fx:id="id" prefWidth="76.0" text="Id" />
                   <TableColumn fx:id="tache" prefWidth="116.0" text="tache" />
-                  <TableColumn fx:id="disponibilité" prefWidth="108.0" text="disponibilité" />
+                  <TableColumn fx:id="disponible" prefWidth="108.0" text="disponibilité" />
                </columns>
             </TableColumn>
         </columns>
