@@ -111,7 +111,7 @@ public class FXMLPlacerEmpController implements Initializable {
         dispo_label.setText(listdata1.getEmploye()
                 .get(table2.getSelectionModel().getSelectedIndex())
                 .getDisponible());
-    
+        
     });
              
   

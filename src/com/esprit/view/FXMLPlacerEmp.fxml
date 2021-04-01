@@ -11,7 +11,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="528.0" prefWidth="648.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.controller.FXMLPlacerEmpController">
    <children>
-      <DatePicker layoutX="405.0" layoutY="23.0" />
+      <DatePicker layoutX="405.0" layoutY="23.0" promptText="4/1/2021" />
       <Label layoutX="388.0" layoutY="91.0" text="Placer employé" textFill="#ee2525">
          <font>
             <Font size="22.0" />
@@ -40,8 +40,8 @@
         <columns>
           <TableColumn prefWidth="300.0" text="Employe">
                <columns>
-                  <TableColumn fx:id="id" prefWidth="76.0" text="Id" />
-                  <TableColumn fx:id="tache" prefWidth="116.0" text="tache" />
+                  <TableColumn fx:id="id" prefWidth="82.0" text="Id" />
+                  <TableColumn fx:id="tache" prefWidth="110.0" text="tache" />
                   <TableColumn fx:id="disponible" prefWidth="108.0" text="disponibilité" />
                </columns>
             </TableColumn>

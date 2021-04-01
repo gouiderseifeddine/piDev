@@ -119,7 +119,7 @@ public class ServiceEmp implements EmpIdao{
                 p.setPrenom(rs.getString("prenom"));
                 p.setTache(rs.getString("tache"));
                 p.setDisponible(rs.getString("disponible"));
-                p.setMobile(rs.getDouble("mobile"));
+                p.setMobile(rs.getInt("mobile"));
                 p.setNum_salle(rs.getInt("id_salle"));
                 list.add(p);
             }
@@ -146,7 +146,7 @@ public class ServiceEmp implements EmpIdao{
                 p.setPrenom(rs.getString("prenom"));
                 p.setTache(rs.getString("tache"));
                 p.setNum_salle(rs.getInt("salle"));
-                p.setMobile(rs.getDouble("mobile"));
+                p.setMobile(rs.getInt("mobile"));
                 
                 
             //}  

@@ -18,7 +18,7 @@ public class Employe {
     String tache;
     String disponible;
     int age;
-    double mobile;
+    int mobile;
     float salaire;
     String num_carte;
     int num_salle;
@@ -26,7 +26,7 @@ public class Employe {
     public Employe() {
     }
 
-    public Employe(String nom, String prenom, String tache, int age, double mobile, float salaire, String num_carte) {
+    public Employe(String nom, String prenom, String tache, int age, int mobile, float salaire, String num_carte) {
         this.nom = nom;
         this.prenom = prenom;
         this.tache = tache;
@@ -36,7 +36,7 @@ public class Employe {
         this.num_carte = num_carte;
     }
 
-    public Employe(String nom, String prenom, String tache, double mobile, int num_salle) {
+    public Employe(String nom, String prenom, String tache, int mobile, int num_salle) {
         this.nom = nom;
         this.prenom = prenom;
         this.tache = tache;
@@ -44,7 +44,7 @@ public class Employe {
         this.num_salle = num_salle;
     }
 
-    public Employe(Integer id, String nom, String prenom, String tache, String disponible, double mobile, int num_salle) {
+    public Employe(Integer id, String nom, String prenom, String tache, String disponible, int mobile, int num_salle) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
@@ -65,7 +65,7 @@ public class Employe {
     
     
 
-    public Employe(String nom, String prenom, String tache, int age, double mobile, float salaire, String num_carte, int num_salle) {
+    public Employe(String nom, String prenom, String tache, int age, int mobile, float salaire, String num_carte, int num_salle) {
         this.nom = nom;
         this.prenom = prenom;
         this.tache = tache;
@@ -117,11 +117,11 @@ public class Employe {
         this.age = age;
     }
 
-    public double getMobile() {
+    public int getMobile() {
         return mobile;
     }
 
-    public void setMobile(double mobile) {
+    public void setMobile(int mobile) {
         this.mobile = mobile;
     }
 

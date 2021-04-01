@@ -5,6 +5,7 @@
  */
 package com.esprit.controller;
 
+import com.esprit.view.Session;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.stripe.Stripe;
@@ -20,7 +21,6 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -30,7 +30,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
@@ -42,33 +41,30 @@ import javax.swing.JOptionPane;
 public class FXMLPayerEmpController implements Initializable {
 
     @FXML
-    private Label label111;
-    @FXML
     private Button btn_payer;
-    @FXML
-    private Label label;
-    @FXML
-    private Label label1;
-    @FXML
-    private Label label2;
-    @FXML
-    private Label label3;
-    @FXML
-    private Label label4;
-    @FXML
-    private Label label5;
     @FXML
     private Button button11;
     @FXML
     private TextField num_compte_id;
     @FXML
     private TextField salaire;
+    @FXML
+    private Label nom_label;
+    @FXML
+    private Label tache_label;
+    @FXML
+    private Label prenom_label;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        
+        nom_label.setText(Session.getS1());
+        tache_label.setText(Session.getS3());
+        prenom_label.setText(Session.getS2());
         
         btn_payer.setOnAction(event -> {
 

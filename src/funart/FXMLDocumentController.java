@@ -9,7 +9,6 @@ import com.esprit.controller.FXMLMenuController;
 import com.esprit.dao.ServiceEmp;
 import com.esprit.entity.Employe;
 import java.io.IOException;
-import static java.lang.Integer.parseInt;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -57,7 +56,6 @@ public class FXMLDocumentController implements Initializable {
     private TextField ins_mobile;
     @FXML
     private TextField ins_num_carte;
-    int i=6;
     @FXML
     private TextField ins_salaire;
     
@@ -66,8 +64,12 @@ public class FXMLDocumentController implements Initializable {
         if(ins_nom.getText().equals("")||
                 ins_prenom.getText().equals("")||
                 ins_age.getText().equals("")||
+                ins_salaire.getText().equals("")||
                 ins_mobile.getText().equals("")||
-                ins_num_carte.getText().equals(""))
+                ins_mobile.getText().length()>8||
+                ins_num_carte.getText().length()>16||
+                ins_num_carte.getText().equals("")
+                )
             return true;
         else 
             return false;
@@ -84,8 +86,14 @@ public class FXMLDocumentController implements Initializable {
         
         // TODO
         btn_ajouter_emp.setOnAction(event -> {
-            
-            Employe p = new Employe(
+            if(verifier()){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information Dialog");
+        alert.setHeaderText(null);
+        alert.setContentText("Merci de vérifier vos informations de saisie");
+        alert.show();
+            }else{
+                Employe p = new Employe(
                     ins_nom.getText(),
                     ins_prenom.getText(),
                     job_label.getText(),                 
@@ -97,7 +105,6 @@ public class FXMLDocumentController implements Initializable {
             ServiceEmp pdao = ServiceEmp.getInstance();
             System.out.println(p.toString());
             pdao.insert(p);
-            i++;
         
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information Dialog");
@@ -111,7 +118,11 @@ public class FXMLDocumentController implements Initializable {
         job_label.setText("job");
         ins_salaire.setText("");
         ins_num_carte.setText("");
+            }
+            
         });
+        
+        
          cancel_button.setOnAction(event -> {
 
             try {
