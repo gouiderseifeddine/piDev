@@ -12,7 +12,7 @@
 <AnchorPane id="AnchorPane" prefHeight="528.0" prefWidth="648.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.controller.FXMLPlacerEmpController">
    <children>
       <DatePicker layoutX="405.0" layoutY="23.0" promptText="4/1/2021" />
-      <Label layoutX="388.0" layoutY="91.0" text="Placer employé" textFill="#ee2525">
+      <Label layoutX="388.0" layoutY="91.0" stylesheets="@../utils/fich1.css" text="Placer employé" textFill="#3864f5">
          <font>
             <Font size="22.0" />
          </font>
@@ -28,21 +28,21 @@
          </font>
       </Label>
       <ComboBox fx:id="combo2" layoutX="483.0" layoutY="311.0" onAction="#Select2" prefWidth="150.0" promptText="choose" />
-      <Label layoutX="359.0" layoutY="315.0" text="Evenement" />
-      <Label fx:id="event_label" layoutX="429.0" layoutY="362.0" prefHeight="25.0" prefWidth="108.0" text="event">
+      <Label layoutX="359.0" layoutY="315.0" stylesheets="@../utils/fich1.css" text="Evenement" />
+      <Label fx:id="event_label" layoutX="429.0" layoutY="362.0" prefHeight="25.0" prefWidth="108.0" stylesheets="@../utils/fich1.css" text="event">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Button fx:id="btn_annuler_placer" layoutX="360.0" layoutY="428.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="94.0" text="Annuler" />
-      <Button fx:id="btn_valider_placement" layoutX="502.0" layoutY="428.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="94.0" text="Valider" />
-      <TableView fx:id="table2" layoutX="27.0" layoutY="23.0" prefHeight="469.0" prefWidth="301.0">
+      <Button fx:id="btn_annuler_placer" layoutX="360.0" layoutY="428.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="94.0" stylesheets="@../utils/fich1.css" text="Annuler" />
+      <Button fx:id="btn_valider_placement" layoutX="502.0" layoutY="428.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="94.0" stylesheets="@../utils/fich1.css" text="Valider" />
+      <TableView fx:id="table2" fixedCellSize="45.0" layoutX="27.0" layoutY="23.0" prefHeight="469.0" prefWidth="301.0" stylesheets="@../utils/fich1.css">
         <columns>
           <TableColumn prefWidth="300.0" text="Employe">
                <columns>
-                  <TableColumn fx:id="id" prefWidth="82.0" text="Id" />
-                  <TableColumn fx:id="tache" prefWidth="110.0" text="tache" />
-                  <TableColumn fx:id="disponible" prefWidth="108.0" text="disponibilité" />
+                  <TableColumn fx:id="id" prefWidth="93.0" text="Id" />
+                  <TableColumn fx:id="tache" prefWidth="107.0" text="tache" />
+                  <TableColumn fx:id="disponible" prefWidth="100.0" text="disponibilité" />
                </columns>
             </TableColumn>
         </columns>

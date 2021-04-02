@@ -28,6 +28,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
@@ -98,6 +99,8 @@ public class FXMLPlacerEmpController implements Initializable {
             return obsInt;
                 });
         
+        
+        
         table2.setOnMouseClicked(event->{
         nom.setText(String.valueOf(listdata1.getEmploye()
                 .get(table2.getSelectionModel().getSelectedIndex())
@@ -111,6 +114,12 @@ public class FXMLPlacerEmpController implements Initializable {
         dispo_label.setText(listdata1.getEmploye()
                 .get(table2.getSelectionModel().getSelectedIndex())
                 .getDisponible());
+        
+        if(dispo_label.getText().equals("dispo")){
+            dispo_label.setTextFill(Color.web("#0aee38", 0.8));
+        }else{
+            dispo_label.setTextFill(Color.web("#ff0000", 0.8));
+        }
         
     });
              
